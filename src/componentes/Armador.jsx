@@ -20,7 +20,7 @@ export function Armador({ onConversar }) {
   return (
     <section className="armador" id="proyecto">
       <div className="armador__col">
-        <h2 className="display" data-reveal="">Arma tu proyecto</h2>
+        <h2 className="display" data-reveal="">Arma <span className="acento">tu proyecto</span></h2>
         <p className="lead" data-reveal="" style={{ '--i': 1 }}>
           Marca lo que necesita tu negocio y mira lo que construiríamos. Es un punto de partida: lo ajustamos juntos cuando hablemos.
         </p>

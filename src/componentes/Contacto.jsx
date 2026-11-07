@@ -46,7 +46,7 @@ export function Contacto({ borrador }) {
 
   return (
     <section className="seccion contacto" id="contacto" ref={seccion} data-escena="retrato" data-a="Juan Sebastián Jiménez Valencia" data-b="Empresario y programador">
-      <h2 className="head" data-reveal="">Hablemos de tu negocio</h2>
+      <h2 className="display" data-reveal=""><span className="acento">Hablemos</span> de tu negocio</h2>
       <p className="contacto__prompt" data-reveal="" style={{ '--i': 1 }}>¿Qué te quita más tiempo cada semana?</p>
       <form className="formulario" onSubmit={enviar} data-reveal="" style={{ '--i': 2 }}>
         <label>

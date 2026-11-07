@@ -57,6 +57,7 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.025em; line-height: 1; text-wr
 .display { font-size: var(--step-display); line-height: 1; }
 .head { font-size: var(--step-head); }
 .sub { font-size: var(--step-lead); line-height: 1.15; font-weight: 600; }
+.acento { color: var(--accent); }
 .lead { font-size: var(--step-lead); line-height: 1.35; }
 
 /* Controles */
@@ -95,7 +96,7 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.025em; line-height: 1; text-wr
 
 /* Secciones de lectura */
 .seccion { padding-top: var(--gap); }
-.seccion > .head { margin-bottom: 2.5rem; }
+.seccion > .head, .seccion > .display { margin-bottom: 2.5rem; }
 .carta__texto { display: flex; flex-direction: column; gap: 1.25rem; }
 .carta__texto figure { margin-block: 1.75rem; }
 .obturador__marco { overflow: clip; }
@@ -110,6 +111,8 @@ figure.obturador figcaption { margin-top: .6rem; font-size: var(--step-small); c
 .modulo + .modulo { margin-top: 4rem; }
 .modulo__tecnico { font-size: var(--step-small); color: var(--muted); }
 .modulo__tecnico strong { font-weight: 600; }
+.modulo > p > strong { font-weight: 600; }
+.servicios .sub, .porque .sub { font-size: clamp(1.5rem, 1.25rem + 1vw, 2.125rem); line-height: 1.1; }
 
 /* Qué cambia en tu negocio */
 .cambios__tabla { width: 100%; border-collapse: collapse; table-layout: fixed; line-height: 1.3; }
@@ -199,8 +202,8 @@ figure.obturador figcaption { margin-top: .6rem; font-size: var(--step-small); c
 .recibo__total { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; align-items: center; margin-top: 2rem; margin-inline: -2rem; padding: .6rem 2rem; min-height: 44px; background: var(--accent); color: var(--accent-ink); font-weight: 500; }
 
 /* Preguntas y contacto */
-.preguntas__texto p + p { margin-top: 1.25rem; }
-.preguntas__texto strong { font-weight: 600; }
+.preguntas__texto p + p { margin-top: 2rem; }
+.preguntas__texto strong { display: block; margin-bottom: .35rem; font-size: var(--step-lead); line-height: 1.2; font-weight: 600; }
 .contacto { padding-bottom: 6rem; min-height: calc(100svh - 4rem); }
 .contacto__prompt { font-size: var(--step-lead); font-weight: 500; margin-bottom: 1.75rem; }
 .formulario { display: flex; flex-direction: column; align-items: flex-start; gap: 1.25rem; max-width: 34rem; }

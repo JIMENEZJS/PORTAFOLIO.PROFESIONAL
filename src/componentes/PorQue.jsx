@@ -9,7 +9,7 @@ const RAZONES = [
 export function PorQue() {
   return (
     <section className="seccion porque" id="por-que" data-escena="retrato" data-a="Por qué elegirme" data-b="Hablas con quien construye">
-      <h2 className="head" data-reveal="">Por qué elegirme</h2>
+      <h2 className="display" data-reveal="">Por qué <span className="acento">elegirme</span></h2>
       {RAZONES.map(([titulo, texto]) => (
         <article className="modulo" key={titulo} data-reveal="">
           <h3 className="sub">{titulo}</h3>
