@@ -176,16 +176,34 @@ figure.obturador figcaption { margin-top: .6rem; font-size: var(--step-small); c
 .agenda__dia { font-weight: 500; justify-content: flex-start; padding-left: .25rem; font-size: 14px; }
 .agenda__cita { background: var(--ink); color: var(--bg); padding: 0 .3rem; overflow: hidden; white-space: nowrap; }
 .agenda__libre { background: var(--bg); }
-.chat { display: flex; flex-direction: column; gap: .6rem; }
-.chat__msg { max-width: 85%; padding: .7rem .95rem; background: var(--bg); align-self: flex-start; }
-.chat__msg--cliente { align-self: flex-end; background: var(--ink); }
-.sistema.is-on .chat__msg--cliente, .demo .chat__msg--cliente { color: var(--bg); }
+/* Maqueta de WhatsApp: sus colores y su tipografía de sistema viven solo aquí */
+.wa { --wa-verde: #008069; --wa-fondo: #efeae2; --wa-saliente: #d9fdd3; --wa-tinta: #111b21; --wa-suave: #54656f; display: flex; flex-direction: column; width: 100%; max-width: 26rem; align-self: center; overflow: hidden; border-radius: 16px; background: var(--wa-fondo); color: var(--wa-tinta); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 15px; line-height: 1.35; box-shadow: 0 12px 32px rgb(0 0 0 / .14); }
+.demo .wa p { color: inherit; }
+.wa__cabeza { display: flex; align-items: center; gap: .55rem; padding: .7rem .9rem .7rem .55rem; background: var(--wa-verde); color: #fff; }
+.wa__atras { flex: none; }
+.wa__avatar { flex: none; display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: 50%; background: #dfe5e7; color: var(--wa-suave); font-weight: 600; }
+.demo .wa .wa__nombre { font-weight: 600; line-height: 1.2; }
+.demo .wa .wa__estado { font-size: .85em; line-height: 1.2; }
+.wa__mensajes { display: flex; flex-direction: column; gap: .5rem; padding: 1rem .9rem; }
+.wa__msg { position: relative; max-width: 85%; padding: .4rem .55rem .35rem; border-radius: 8px; background: #fff; align-self: flex-start; border-top-left-radius: 0; box-shadow: 0 1px 1px rgb(0 0 0 / .1); overflow-wrap: anywhere; }
+.wa__msg::before { content: ''; position: absolute; top: 0; left: -7px; border-style: solid; border-width: 0 7px 8px 0; border-color: transparent #fff transparent transparent; }
+.wa__msg--cliente { align-self: flex-end; background: var(--wa-saliente); border-top-left-radius: 8px; border-top-right-radius: 0; }
+.wa__msg--cliente::before { left: auto; right: -7px; border-width: 8px 7px 0 0; border-color: var(--wa-saliente) transparent transparent transparent; }
+.wa__meta { display: inline-flex; align-items: center; gap: .2rem; float: right; margin: .35rem 0 0 .7rem; font-size: 11px; line-height: 1; color: var(--wa-suave); }
+.wa__visto { color: #027eb5; }
+.demo:has(.wa) { padding: .75rem; }
+.wa__barra { display: flex; align-items: center; gap: .5rem; padding: 0 .6rem .7rem; }
+.wa__campo { flex: 1; min-height: 2.6rem; display: flex; align-items: center; padding: 0 1rem; border-radius: 999px; background: #fff; color: var(--wa-suave); }
+.wa__enviar { flex: none; display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 50%; background: var(--wa-verde); color: #fff; }
 
 .stage--ui { background: var(--surface); }
 .stage__demos { position: absolute; inset: 0 0 56px; }
 .stage__demos .demo { position: absolute; inset: 0; margin: 0; padding: clamp(1.5rem, 3vw, 2.75rem); justify-content: center; font-size: 16px; overflow: clip; visibility: hidden; clip-path: inset(100% 0 0 0); transition: clip-path 560ms var(--ease-in-out), visibility 0s 560ms; }
 .stage__demos .demo.is-pasada { clip-path: inset(0 0 100% 0); }
 .stage__demos .demo.is-on { visibility: visible; clip-path: inset(0 0 0 0); transition: clip-path 560ms var(--ease-in-out), visibility 0s; }
+.stage__demos .demo:has(.wa) { padding: clamp(.75rem, 1.5vw, 1.5rem); }
+.stage__demos .wa { max-width: 40rem; font-size: clamp(16px, 1.3vw, 20px); }
+.stage__demos .wa__estado, .stage__demos .wa__meta { font-size: .8em; }
 .stage__demos .tabla { font-size: 16px; }
 .stage__demos .ui__barras { height: 22svh; min-height: 7rem; }
 .stage__demos .agenda > * { min-height: clamp(2rem, 5svh, 3rem); }

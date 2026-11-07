@@ -17,22 +17,50 @@ function Cabeza({ titulo, nota, cifra }) {
 }
 
 const CONVERSACION = [
-  ['cliente', 'Hola, ¿tienen café en grano de 500 g?'],
-  ['asistente', 'Sí, nos quedan 6 unidades. ¿Lo quieres a domicilio o prefieres recogerlo en la tienda?'],
-  ['cliente', 'A domicilio. ¿Me pueden dar un precio especial si llevo las 6?'],
-  ['asistente', 'Eso lo define el equipo de ventas. Ya les pasé tu conversación y te responderán por aquí.'],
+  ['cliente', 'Hola, ¿tienen café en grano de 500 g?', '10:32'],
+  ['asistente', 'Sí, nos quedan 6 unidades. ¿Lo quieres a domicilio o prefieres recogerlo en la tienda?', '10:32'],
+  ['cliente', 'A domicilio. ¿Me pueden dar un precio especial si llevo las 6?', '10:33'],
+  ['asistente', 'Eso lo define el equipo de ventas. Ya les pasé tu conversación y te responderán por aquí.', '10:33'],
 ];
 
+/* Una conversación con la apariencia de WhatsApp: el visitante reconoce el canal al instante */
 export function Asistente({ clase }) {
   return (
     <Marco clase={clase}>
-      <Cabeza titulo="Asistente de la tienda" nota="Responde con el inventario real y sabe cuándo pasar a una persona" />
-      <div className="chat">
-        {CONVERSACION.map(([quien, texto]) => (
-          <p key={texto} className={`chat__msg chat__msg--${quien}`}>
-            <span className="sr">{quien === 'cliente' ? 'Cliente: ' : 'Asistente: '}</span>{texto}
-          </p>
-        ))}
+      <div className="wa">
+        <div className="wa__cabeza">
+          <svg className="wa__atras" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M12.5 4 6.5 10l6 6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          <span className="wa__avatar" aria-hidden="true">A</span>
+          <div>
+            <p className="wa__nombre">Asistente de la tienda</p>
+            <p className="wa__estado">en línea</p>
+          </div>
+        </div>
+        <div className="wa__mensajes">
+          {CONVERSACION.map(([quien, texto, hora]) => (
+            <p key={texto} className={`wa__msg wa__msg--${quien}`}>
+              <span className="sr">{quien === 'cliente' ? 'Cliente: ' : 'Asistente: '}</span>{texto}
+              <span className="wa__meta">
+                {hora}
+                {quien === 'cliente' && (
+                  <svg className="wa__visto" width="16" height="11" viewBox="0 0 16 11" aria-hidden="true">
+                    <path d="M1 6l3 3 6-7.5M6.5 8.2 7.3 9l6-7.5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                )}
+              </span>
+            </p>
+          ))}
+        </div>
+        <div className="wa__barra" aria-hidden="true">
+          <span className="wa__campo">Mensaje</span>
+          <span className="wa__enviar">
+            <svg width="18" height="18" viewBox="0 0 18 18">
+              <path d="M2.5 15.5 16 9 2.5 2.5v5l8 1.5-8 1.5z" fill="currentColor" />
+            </svg>
+          </span>
+        </div>
       </div>
     </Marco>
   );
