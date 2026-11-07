@@ -1,57 +1,72 @@
 import { useEffect, useRef, useState } from 'react';
-import { CORREO } from '../datos.js';
+import { API_URL, CORREO } from '../datos.js';
 
-const NOTA_INICIAL = 'Se abrirá tu correo con el mensaje listo para enviar.';
+const VACIO = { nombre: '', correo: '', mensaje: '', sitio: '' };
 
 export function Contacto({ borrador }) {
-  const campo = useRef(null);
+  const primerCampo = useRef(null);
   const seccion = useRef(null);
-  const [mensaje, setMensaje] = useState('');
-  const [nota, setNota] = useState(NOTA_INICIAL);
+  const [campos, setCampos] = useState(VACIO);
+  const [enviando, setEnviando] = useState(false);
+  const [nota, setNota] = useState('');
 
   // Viene de "Arma tu proyecto": deja el mensaje escrito y lleva al visitante hasta aquí
   useEffect(() => {
     if (!borrador) return;
-    setMensaje(borrador.texto);
-    setNota('Revisa el mensaje y envíalo con la flecha. Se abrirá tu correo.');
+    setCampos((c) => ({ ...c, mensaje: borrador.texto }));
+    setNota('Revisa el mensaje y completa tus datos para enviarlo.');
     seccion.current.scrollIntoView();
-    campo.current.focus({ preventScroll: true });
+    primerCampo.current.focus({ preventScroll: true });
   }, [borrador]);
 
-  const enviar = (e) => {
+  const cambiar = ({ target }) => setCampos((c) => ({ ...c, [target.name]: target.value }));
+
+  const enviar = async (e) => {
     e.preventDefault();
-    const texto = mensaje.trim();
-    if (!texto) {
-      campo.current.focus();
-      return;
+    if (enviando) return;
+    setEnviando(true);
+    setNota('Enviando…');
+    try {
+      const res = await fetch(`${API_URL}/api/contacto`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(campos),
+      });
+      if (!res.ok) throw new Error();
+      setNota('Mensaje enviado');
+      setCampos(VACIO);
+    } catch {
+      setNota('Mensaje no enviado');
+    } finally {
+      setEnviando(false);
     }
-    const asunto = encodeURIComponent('Proyecto desde tu portafolio');
-    window.location.href = `mailto:${CORREO}?subject=${asunto}&body=${encodeURIComponent(texto)}`;
-    setNota(`Si tu correo no se abrió, escríbeme directamente a ${CORREO}.`);
   };
 
   return (
     <section className="seccion contacto" id="contacto" ref={seccion} data-escena="retrato" data-a="Juan Sebastián Jiménez Valencia" data-b="Empresario y programador">
       <h2 className="head" data-reveal="">Hablemos de tu negocio</h2>
       <p className="contacto__prompt" data-reveal="" style={{ '--i': 1 }}>¿Qué te quita más tiempo cada semana?</p>
-      <form className="campo" onSubmit={enviar} data-reveal="" style={{ '--i': 2 }}>
-        <label className="sr" htmlFor="mensaje">Cuéntame qué necesitas</label>
-        <input
-          id="mensaje"
-          ref={campo}
-          type="text"
-          required
-          autoComplete="off"
-          enterKeyHint="send"
-          placeholder="Llevo los pedidos en un cuaderno…"
-          value={mensaje}
-          onChange={(e) => setMensaje(e.target.value)}
-        />
-        <button type="submit" className="campo__enviar" aria-label="Enviar mensaje">
-          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
-            <path d="M3 10h13M11 5l5 5-5 5" fill="none" stroke="currentColor" strokeWidth="2" />
-          </svg>
-        </button>
+      <form className="formulario" onSubmit={enviar} data-reveal="" style={{ '--i': 2 }}>
+        <label>
+          Tu nombre
+          <input ref={primerCampo} name="nombre" type="text" required maxLength={100} autoComplete="name" value={campos.nombre} onChange={cambiar} />
+        </label>
+        <label>
+          Tu correo
+          <input name="correo" type="email" required maxLength={254} autoComplete="email" value={campos.correo} onChange={cambiar} />
+        </label>
+        <label>
+          Cuéntame qué necesitas
+          <textarea name="mensaje" required rows={5} maxLength={5000} placeholder="Llevo los pedidos en un cuaderno…" value={campos.mensaje} onChange={cambiar} />
+        </label>
+        {/* Campo trampa para robots: una persona nunca lo ve ni lo llena */}
+        <div className="trampa" aria-hidden="true">
+          <label>
+            No llenes este campo
+            <input name="sitio" type="text" tabIndex={-1} autoComplete="off" value={campos.sitio} onChange={cambiar} />
+          </label>
+        </div>
+        <button type="submit" className="boton" disabled={enviando}>{enviando ? 'Enviando…' : 'Enviar mensaje'}</button>
       </form>
       <p className="contacto__nota" aria-live="polite" data-reveal="" style={{ '--i': 3 }}>{nota}</p>
       <p className="contacto__dato" data-reveal="" style={{ '--i': 4 }}>

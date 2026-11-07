@@ -1,12 +1,14 @@
 :root {
-  --bg: #f7f9f8;
-  --surface: #e6edea;
-  --ink: #06525c;
-  --muted: #2f737d;
-  --accent: #06525c;
-  --accent-ink: #f7f9f8;
-  --field: #06525c;
-  --field-ink: #f7f9f8;
+  --bg: #f7f6f3;
+  --surface: #e9e7e1;
+  --ink: #1e1f22;
+  --muted: #5b5d63;
+  --line: #c9c6bd;
+  --accent: #c2410c;
+  --accent-hover: #9a3412;
+  --accent-ink: #ffffff;
+  --field: #1e1f22;
+  --field-ink: #f7f6f3;
 
   --face: 'Zilla Slab', Rockwell, 'Roboto Slab', Georgia, serif;
 
@@ -37,13 +39,13 @@ ul { list-style: none; }
 img, svg { display: block; max-width: 100%; }
 img { height: auto; }
 a { color: inherit; }
-button, input { font: inherit; color: inherit; }
+button, input, textarea { font: inherit; color: inherit; }
 button { background: none; border: 0; padding: 0; cursor: pointer; }
 a, button, label { touch-action: manipulation; }
 button, label, .nav a { -webkit-user-select: none; user-select: none; }
 p { text-wrap: pretty; }
 h1, h2, h3 { font-weight: 600; letter-spacing: -0.025em; line-height: 1; text-wrap: balance; }
-::selection { background: var(--ink); color: var(--bg); }
+::selection { background: var(--accent); color: var(--accent-ink); }
 :focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
 :target, [id] { scroll-margin-top: 1.5rem; }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
@@ -62,9 +64,9 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.025em; line-height: 1; text-wr
 .boton:active { transform: scale(0.97); }
 .enlace { display: inline-flex; align-items: center; min-height: 44px; text-decoration: underline; text-decoration-color: transparent; text-decoration-thickness: .07em; text-underline-offset: .2em; transition: text-decoration-color var(--t-hover) ease, transform var(--t-press) var(--ease-out); }
 .enlace:active { transform: scale(0.97); }
-.enlace--marcado { text-decoration-color: currentColor; }
+.enlace--marcado { color: var(--accent); text-decoration-color: currentColor; }
 @media (hover: hover) and (pointer: fine) {
-  .boton:hover { background: #033a41; }
+  .boton:hover { background: var(--accent-hover); }
   .enlace:hover { text-decoration-color: currentColor; }
   .enlace--marcado:hover { text-decoration-thickness: .14em; }
 }
@@ -148,7 +150,7 @@ figure.obturador figcaption { margin-top: .6rem; font-size: var(--step-small); c
 .ui__barras small { font-size: 13px; text-align: center; }
 .tabla { width: 100%; border-collapse: collapse; font-family: var(--face); font-size: 15px; font-variant-numeric: tabular-nums; }
 .tabla th { text-align: left; font-weight: 500; padding: .45rem .5rem; color: var(--muted); }
-.tabla td { padding: .55rem .5rem; border-top: 1px solid #c7d6d1; }
+.tabla td { padding: .55rem .5rem; border-top: 1px solid var(--line); }
 .tabla th:first-child, .tabla td:first-child { padding-left: 0; }
 .tabla th:last-child, .tabla td:last-child { padding-right: 0; }
 .tabla .num { text-align: right; }
@@ -182,21 +184,23 @@ figure.obturador figcaption { margin-top: .6rem; font-size: var(--step-small); c
 .recibo li span:first-child { flex: 0 1 auto; }
 .recibo li span:last-child { flex: none; text-align: right; }
 .recibo li i { flex: 1; min-width: 1rem; border-bottom: 3px dotted currentColor; transform: translateY(-.25em); }
-.recibo__total { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; align-items: center; margin-top: 2rem; margin-inline: -2rem; padding: .6rem 2rem; min-height: 44px; background: var(--ink); color: var(--bg); font-weight: 500; }
+.recibo__total { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; align-items: center; margin-top: 2rem; margin-inline: -2rem; padding: .6rem 2rem; min-height: 44px; background: var(--accent); color: var(--accent-ink); font-weight: 500; }
 
 /* Preguntas y contacto */
 .preguntas__texto p + p { margin-top: 1.25rem; }
 .preguntas__texto strong { font-weight: 600; }
 .contacto { padding-bottom: 6rem; min-height: calc(100svh - 4rem); }
 .contacto__prompt { font-size: var(--step-lead); font-weight: 500; margin-bottom: 1.75rem; }
-.campo { position: relative; max-width: 34rem; }
-.campo input { width: 100%; height: 4rem; padding: 0 4.25rem 0 1.25rem; background: var(--surface); border: 0; border-radius: 0; font-size: max(1rem, var(--step-body)); outline: 2px solid transparent; outline-offset: -2px; transition: outline-color var(--t-hover) ease; text-overflow: ellipsis; }
-.campo input::placeholder { color: var(--muted); opacity: 1; }
-.campo input:focus { outline-color: var(--ink); }
-.campo__enviar { position: absolute; right: .5rem; top: .5rem; width: 3rem; height: 3rem; display: grid; place-items: center; background: var(--accent); color: var(--accent-ink); transition: transform var(--t-press) var(--ease-out), background-color var(--t-hover) ease; }
-.campo__enviar:active { transform: scale(0.95); }
-@media (hover: hover) and (pointer: fine) { .campo__enviar:hover { background: #033a41; } }
-.contacto__nota { margin-top: 1rem; font-size: var(--step-small); }
+.formulario { display: flex; flex-direction: column; align-items: flex-start; gap: 1.25rem; max-width: 34rem; }
+.formulario label { display: flex; flex-direction: column; gap: .4rem; width: 100%; font-size: var(--step-small); font-weight: 500; }
+.formulario input, .formulario textarea { width: 100%; padding: .9rem 1.1rem; background: var(--surface); border: 0; border-radius: 0; font-size: max(1rem, var(--step-body)); font-weight: 400; outline: 2px solid transparent; outline-offset: -2px; transition: outline-color var(--t-hover) ease; }
+.formulario textarea { resize: vertical; }
+.formulario ::placeholder { color: var(--muted); opacity: 1; }
+.formulario input, .formulario textarea { caret-color: var(--accent); }
+.formulario input:focus, .formulario textarea:focus { outline-color: var(--accent); }
+.boton:disabled { opacity: .6; cursor: progress; }
+.trampa { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.contacto__nota { margin-top: 1rem; min-height: 1.5em; font-size: var(--step-small); }
 .contacto__dato { margin-top: 3rem; }
 .contacto__dato a { display: inline; overflow-wrap: anywhere; }
 
