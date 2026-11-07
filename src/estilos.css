@@ -79,7 +79,8 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.025em; line-height: 1; text-wr
 .stage__fotos, .stage__fotos img { position: absolute; inset: 0; }
 .stage__fotos img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; opacity: 0; transition: opacity 1600ms ease; }
 .stage__fotos img.is-on { opacity: 1; }
-.stage__fotos img[data-foto="perforadora"] { filter: grayscale(1); object-position: 50% 60%; }
+.stage__fotos img[data-foto="trabajo"] { object-position: 50% 50%; }
+.stage__fotos img[data-foto="pedido"] { object-position: 42% 50%; }
 .stage__fotos img[data-foto="manos"] { object-position: 50% 80%; }
 .stage__barra { position: absolute; inset: auto 0 0; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; min-height: 56px; padding: 0 var(--pad); background: var(--bg); color: var(--ink); font-size: var(--step-small); }
 
@@ -100,7 +101,7 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.025em; line-height: 1; text-wr
 .carta__texto { display: flex; flex-direction: column; gap: 1.25rem; }
 .carta__texto figure { margin-block: 1.75rem; }
 .obturador__marco { overflow: clip; }
-figure.obturador img { width: 100%; aspect-ratio: 12 / 11; object-fit: cover; filter: grayscale(1); }
+figure.obturador img { width: 100%; aspect-ratio: 12 / 11; object-fit: cover; }
 figure.obturador figcaption { margin-top: .6rem; font-size: var(--step-small); color: var(--muted); }
 .carta__firma { margin-top: 2.25rem; }
 .carta__firma em { display: block; font-size: var(--step-lead); font-weight: 500; }

@@ -8,7 +8,7 @@ const CAMBIOS = [
 
 export function Cambios() {
   return (
-    <section className="seccion cambios" id="cambios" data-escena="medio" data-a="Qué cambia en tu negocio" data-b="Del cuaderno al sistema">
+    <section className="seccion cambios" id="cambios" data-escena="pedido" data-a="Qué cambia en tu negocio" data-b="Del cuaderno al sistema">
       <h2 className="display" data-reveal="">Qué cambia en <span className="acento">tu negocio</span></h2>
       <table className="cambios__tabla" data-reveal="">
         <thead>

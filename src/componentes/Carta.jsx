@@ -8,13 +8,13 @@ export function Carta() {
         <figure className="obturador" data-reveal="obturador">
           <div className="obturador__marco">
             <img
-              src={`${import.meta.env.BASE_URL}assets/libro-cuentas.jpg`}
-              width="1200"
-              height="1105"
-              alt="Libro de cuentas antiguo con cubierta jaspeada rota y una etiqueta escrita a mano que dice Accounts Payable."
+              src={`${import.meta.env.BASE_URL}assets/cuentas.jpg`}
+              width="1600"
+              height="1064"
+              alt="Página de un libro de cuentas cuadriculado con columnas de cifras escritas a mano."
             />
           </div>
-          <figcaption>Un libro de cuentas por pagar, en uso entre 1919 y 1928.</figcaption>
+          <figcaption>Cuentas escritas a mano, el punto de partida de muchos negocios.</figcaption>
         </figure>
         <p data-reveal="">Tu negocio ya funciona con algo: un cuaderno, un Excel, un grupo de WhatsApp. Mi trabajo es convertirlo en una solución que no se pierda, que ahorre tiempo y que tu equipo de verdad use. A veces es una página web, a veces un chatbot o una automatización, y a veces un sistema completo.</p>
         <p data-reveal="" style={{ '--i': 1 }}>Si no sabes de tecnología, no hace falta: te explico cada decisión con palabras simples. Si sabes, podemos hablar de arquitectura y herramientas. Programo en varios lenguajes, como JavaScript y Java, y elijo cada herramienta según lo que tu proyecto necesita.</p>

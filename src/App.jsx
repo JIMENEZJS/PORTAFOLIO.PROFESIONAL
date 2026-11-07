@@ -16,7 +16,8 @@ import { Pie } from './componentes/Pie.jsx';
 const FOTOS_INICIO = [
   { id: 'retrato', src: 'retrato.jpg', width: 1086, height: 1449, prioridad: true, alt: 'Juan Sebastián Jiménez Valencia de traje negro sobre un fondo gris oscuro, con las manos en los bolsillos, mirando hacia un lado.' },
   { id: 'medio', src: 'retrato-medio.jpg', width: 700, height: 933, alt: 'Juan Sebastián en un plano más cercano, de traje negro y camiseta negra.' },
-  { id: 'perforadora', src: 'perforadora.jpg', width: 1044, height: 1400, alt: 'Fotografía antigua de una mujer perforando tarjetas de datos en una máquina Hollerith, con dos compañeras detrás.' },
+  { id: 'pedido', src: 'pedido.jpg', width: 2250, height: 1500, alt: 'Una persona toca la pantalla de una tablet con el menú de un restaurante para registrar un pedido.' },
+  { id: 'trabajo', src: 'trabajo.jpg', width: 2250, height: 1500, alt: 'Manos escribiendo en el teclado de un computador portátil con código en la pantalla.' },
 ];
 
 const FOTOS_CIERRE = [
