@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { API_URL, CORREO } from '../datos.js';
 
-const VACIO = { nombre: '', correo: '', mensaje: '', sitio: '' };
+const VACIO = { nombre: '', correo: '', whatsapp: '', mensaje: '', sitio: '' };
 
 export function Contacto({ borrador }) {
   const primerCampo = useRef(null);
@@ -33,7 +33,12 @@ export function Contacto({ borrador }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(campos),
       });
-      if (!res.ok) throw new Error();
+      if (!res.ok) {
+        // El servidor explica qué corregir, por ejemplo un WhatsApp mal escrito
+        const { error } = await res.json().catch(() => ({}));
+        setNota(error ?? 'Mensaje no enviado');
+        return;
+      }
       setNota('Mensaje enviado');
       setCampos(VACIO);
       setAcepta(false);
@@ -56,6 +61,10 @@ export function Contacto({ borrador }) {
         <label>
           Tu correo
           <input name="correo" type="email" required maxLength={254} autoComplete="email" value={campos.correo} onChange={cambiar} />
+        </label>
+        <label>
+          Tu WhatsApp
+          <input name="whatsapp" type="tel" required maxLength={25} autoComplete="tel" inputMode="tel" placeholder="300 123 4567" value={campos.whatsapp} onChange={cambiar} />
         </label>
         <label>
           Cuéntame qué necesitas

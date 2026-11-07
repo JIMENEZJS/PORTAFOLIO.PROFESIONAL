@@ -5,19 +5,37 @@ const TAMANO_MAXIMO = 20 * 1024;
 const VENTANA_SEGUNDOS = 15 * 60;
 const LIMITE_ENVIOS = 5;
 
+/*
+  Deja el número solo con dígitos e indicativo, como lo pide wa.me, o null si no es válido.
+  Sin indicativo solo se aceptan celulares de Colombia: 10 dígitos que empiezan por 3.
+*/
+export function normalizarWhatsapp(valor) {
+  const crudo = valor.trim();
+  if (!/^\+?[\d\s().-]+$/.test(crudo)) return null;
+  const digitos = crudo.replace(/\D/g, '');
+
+  if (crudo.startsWith('+')) return /^[1-9]\d{7,14}$/.test(digitos) ? digitos : null;
+  if (/^00[1-9]\d{7,14}$/.test(digitos)) return digitos.slice(2);
+  if (/^3\d{9}$/.test(digitos)) return `57${digitos}`;
+  if (/^573\d{9}$/.test(digitos)) return digitos;
+  return null;
+}
+
 /* Devuelve los datos limpios, o el texto del error para mostrarle al visitante. */
 export function validarContacto(cuerpo) {
   const texto = (v) => (typeof v === 'string' ? v.trim() : '');
   const nombre = texto(cuerpo?.nombre);
   const correo = texto(cuerpo?.correo);
   const mensaje = texto(cuerpo?.mensaje);
+  const whatsapp = normalizarWhatsapp(texto(cuerpo?.whatsapp));
 
   // El nombre va en el asunto del correo: no admite saltos de línea
   if (!nombre || nombre.length > 100 || /[\r\n]/.test(nombre)) return { error: 'Escribe un nombre válido.' };
   if (correo.length > 254 || !CORREO_VALIDO.test(correo)) return { error: 'Escribe un correo válido para poder responderte.' };
+  if (!whatsapp) return { error: 'Escribe un WhatsApp válido. Si no es de Colombia, incluye el indicativo, por ejemplo +52 55 1234 5678.' };
   if (!mensaje) return { error: 'Cuéntame qué necesitas.' };
   if (mensaje.length > 5000) return { error: 'El mensaje es demasiado largo. Resúmelo en menos de 5000 caracteres.' };
-  return { datos: { nombre, correo, mensaje } };
+  return { datos: { nombre, correo, whatsapp, mensaje } };
 }
 
 /*

@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict';
 import { beforeEach, test } from 'node:test';
-import { atenderContacto } from '../functions/_contacto.js';
+import { atenderContacto, normalizarWhatsapp } from '../functions/_contacto.js';
+import { armarCorreo } from '../functions/_correo.js';
 
-const VALIDO = { nombre: 'Laura', correo: 'laura@ejemplo.com', mensaje: 'Necesito un chatbot.' };
+const VALIDO = { nombre: 'Laura', correo: 'laura@ejemplo.com', whatsapp: '573001234567', mensaje: 'Necesito un chatbot.' };
 
 let enviados, fallar, kv;
 
@@ -45,6 +46,10 @@ for (const [caso, cambio] of [
   ['nombre con salto de línea', { nombre: 'Laura\nBcc: x@y.com' }],
   ['correo inválido', { correo: 'laura' }],
   ['correo con salto de línea', { correo: 'laura@ejemplo.com\nBcc: x@y.com' }],
+  ['sin WhatsApp', { whatsapp: '' }],
+  ['WhatsApp con letras', { whatsapp: '300abc4567' }],
+  ['WhatsApp ambiguo sin indicativo', { whatsapp: '5512345678' }],
+  ['WhatsApp que no es texto', { whatsapp: 3001234567 }],
   ['mensaje vacío', { mensaje: '' }],
   ['mensaje demasiado largo', { mensaje: 'a'.repeat(5001) }],
   ['campo que no es texto', { mensaje: { a: 1 } }],
@@ -94,4 +99,42 @@ test('no guarda la IP en claro', async () => {
   await publicar(VALIDO);
   assert.equal(kv.datos.size, 1);
   assert.doesNotMatch([...kv.datos.keys()][0], /203\.0\.113\.7/);
+});
+
+for (const [entrada, esperado] of [
+  ['300 123 4567', '573001234567'],
+  ['(300) 123-4567', '573001234567'],
+  ['573001234567', '573001234567'],
+  ['+57 300 123 4567', '573001234567'],
+  ['+52 55 1234 5678', '525512345678'],
+  ['0052 55 1234 5678', '525512345678'],
+  ['123', null],
+  ['+0 300 123 4567', null],
+  ['+57 300 123 4567?text=hola', null],
+]) {
+  test(`normaliza el WhatsApp: ${entrada}`, () => {
+    assert.equal(normalizarWhatsapp(entrada), esperado);
+  });
+}
+
+test('el correo escapa lo que escribe el visitante', () => {
+  const { html } = armarCorreo({
+    nombre: '<img src=x onerror=alert(1)>',
+    correo: 'a"><script>@ejemplo.com',
+    whatsapp: '573001234567',
+    mensaje: '<script>alert(1)</script>\n"comillas" & más',
+  });
+  assert.doesNotMatch(html, /<script|<img/);
+  assert.match(html, /&lt;script&gt;alert\(1\)&lt;\/script&gt;<br>&quot;comillas&quot; &amp; más/);
+});
+
+test('el correo trae el chat y las respuestas de WhatsApp con el saludo escrito', () => {
+  const { html, texto } = armarCorreo({ ...VALIDO, nombre: 'Laura Gómez' });
+  assert.equal((html.match(/https:\/\/wa\.me\/573001234567/g) ?? []).length, 5);
+  const borrador = html.match(/https:\/\/wa\.me\/573001234567\?text=([^"]+)"/)[1];
+  assert.match(decodeURIComponent(borrador), /^Hola Laura, soy Juan Sebastián\./);
+  assert.match(html, /\+57 300 123 4567/);
+  assert.match(html, /mailto:laura@ejemplo\.com\?subject=/);
+  assert.match(texto, /WhatsApp: \+57 300 123 4567/);
+  assert.match(texto, /https:\/\/wa\.me\/573001234567/);
 });
