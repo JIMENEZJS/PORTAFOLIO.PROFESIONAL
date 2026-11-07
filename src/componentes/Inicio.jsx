@@ -18,7 +18,7 @@ export function Inicio() {
           <span className="linea"><span data-linea style={{ '--i': 1 }}>Jiménez Valencia</span></span>
         </h1>
         <p className="hero__frase" data-carga style={{ '--d': '420ms' }}>
-          Soy empresario y programador. Creo páginas web, chatbots con inteligencia artificial, automatizaciones y soluciones tecnológicas a la medida de tu negocio.
+          Convierto tus ideas en soluciones digitales que trabajan para tu negocio, incluso cuando tú no estás.
         </p>
         <a className="boton" href="#contacto" data-carga style={{ '--d': '500ms' }}>Cuéntame tu proyecto</a>
       </div>

@@ -3,10 +3,12 @@ import { useEntradas, useSeccionActiva } from './hooks.js';
 import { Escenario } from './componentes/Escenario.jsx';
 import { Inicio } from './componentes/Inicio.jsx';
 import { Carta } from './componentes/Carta.jsx';
+import { Cambios } from './componentes/Cambios.jsx';
 import { Servicios } from './componentes/Servicios.jsx';
 import { Armador } from './componentes/Armador.jsx';
 import { Sistemas } from './componentes/Sistemas.jsx';
 import { Proceso } from './componentes/Proceso.jsx';
+import { PorQue } from './componentes/PorQue.jsx';
 import { Preguntas } from './componentes/Preguntas.jsx';
 import { Contacto } from './componentes/Contacto.jsx';
 import { Pie } from './componentes/Pie.jsx';
@@ -26,7 +28,7 @@ export default function App() {
   // El proyecto armado por el visitante llega al formulario de contacto
   const [borrador, setBorrador] = useState(null);
   const inicio = useSeccionActiva({ escena: 'retrato', a: 'Empresario y programador', b: 'Web, IA y automatización' });
-  const cierre = useSeccionActiva({ escena: 'manos', a: 'Preguntas frecuentes', b: 'Respuestas directas' });
+  const cierre = useSeccionActiva({ escena: 'retrato', a: 'Por qué elegirme', b: 'Hablas con quien construye' });
   useEntradas();
 
   return (
@@ -38,6 +40,7 @@ export default function App() {
           <div className="read">
             <Inicio />
             <Carta />
+            <Cambios />
             <Servicios />
           </div>
         </div>
@@ -49,6 +52,7 @@ export default function App() {
         <div className="split" ref={cierre.ref}>
           <Escenario fotos={FOTOS_CIERRE} activa={cierre.activa} clase="stage--cierre" />
           <div className="read">
+            <PorQue />
             <Preguntas />
             <Contacto borrador={borrador} />
           </div>

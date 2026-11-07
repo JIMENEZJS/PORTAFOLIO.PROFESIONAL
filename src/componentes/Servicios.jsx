@@ -34,7 +34,7 @@ const MODULOS = [
 export function Servicios() {
   return (
     <section className="seccion servicios" id="servicios" data-escena="perforadora" data-a="Perforadora de tarjetas Hollerith" data-b="Automatizar no es nuevo">
-      <h2 className="head" data-reveal="">Qué puedo hacer por tu negocio</h2>
+      <h2 className="head" data-reveal="">Qué te ofrezco</h2>
       <p className="servicios__intro" data-reveal="" style={{ '--i': 1 }}>
         No necesitas saber de programación para trabajar conmigo. Si tú o tu equipo sí saben, debajo de cada servicio está el detalle técnico.
       </p>
