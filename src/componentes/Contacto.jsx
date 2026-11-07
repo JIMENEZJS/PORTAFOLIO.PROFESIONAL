@@ -7,6 +7,7 @@ export function Contacto({ borrador }) {
   const primerCampo = useRef(null);
   const seccion = useRef(null);
   const [campos, setCampos] = useState(VACIO);
+  const [acepta, setAcepta] = useState(false);
   const [enviando, setEnviando] = useState(false);
   const [nota, setNota] = useState('');
 
@@ -35,6 +36,7 @@ export function Contacto({ borrador }) {
       if (!res.ok) throw new Error();
       setNota('Mensaje enviado');
       setCampos(VACIO);
+      setAcepta(false);
     } catch {
       setNota('Mensaje no enviado');
     } finally {
@@ -66,6 +68,10 @@ export function Contacto({ borrador }) {
             <input name="sitio" type="text" tabIndex={-1} autoComplete="off" value={campos.sitio} onChange={cambiar} />
           </label>
         </div>
+        <label className="formulario__acepto">
+          <input type="checkbox" required checked={acepta} onChange={(e) => setAcepta(e.target.checked)} />
+          <span>Autorizo el tratamiento de mis datos para responder a mi mensaje, incluido su envío a proveedores fuera de Colombia, según la <a className="enlace--marcado" href="privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</span>
+        </label>
         <button type="submit" className="boton" disabled={enviando}>{enviando ? 'Enviando…' : 'Enviar mensaje'}</button>
       </form>
       <p className="contacto__nota" aria-live="polite" data-reveal="" style={{ '--i': 3 }}>{nota}</p>

@@ -1,0 +1,26 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "organic-clip-path",
+        "value": "*",
+        "files": [
+          "privacidad.html"
+        ],
+        "createdAt": "2026-11-07T05:07:48.365Z",
+        "reason": "agent triage: comes from the shared stylesheet's .recibo rule, a regular zigzag receipt edge that predates these pages; these pages render no .recibo"
+      },
+      {
+        "rule": "organic-clip-path",
+        "value": "*",
+        "files": [
+          "terminos.html"
+        ],
+        "createdAt": "2026-11-07T05:07:48.387Z",
+        "reason": "agent triage: comes from the shared stylesheet's .recibo rule, a regular zigzag receipt edge that predates these pages; these pages render no .recibo"
+      }
+    ]
+  }
+}
