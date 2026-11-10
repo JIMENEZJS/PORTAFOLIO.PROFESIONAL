@@ -1,5 +1,6 @@
 const CAMBIOS = [
-  ['Pedidos anotados en un cuaderno', 'Un panel donde cada pedido queda registrado'],
+  ['Citas, pedidos o casos anotados en un cuaderno', 'Un panel donde todo queda registrado'],
+  ['Clientes o pacientes que olvidan su cita', 'Recordatorios que se envían solos'],
   ['Clientes esperando una respuesta', 'Un asistente que responde a cualquier hora'],
   ['Facturas y reportes hechos a mano', 'Documentos que se generan solos'],
   ['Datos copiados de un programa a otro', 'Tus herramientas conectadas entre sí'],

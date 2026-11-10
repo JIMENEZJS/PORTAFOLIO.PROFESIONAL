@@ -1,5 +1,6 @@
 const RAZONES = [
   ['Hablas con quien construye', 'Sin intermediarios ni teléfono roto. La persona que entiende tu negocio es la misma que escribe el código.'],
+  ['Una solución a tu medida y a tu alcance', 'Me adapto a tu forma de trabajar, no al revés, y propongo lo que de verdad necesitas, con un precio asequible y sin pagar por lo que no vas a usar.'],
   ['Sabes el precio antes de empezar', 'Después de la primera conversación recibes una propuesta con precio cerrado, así conoces el total desde el principio.'],
   ['Ves avances cada semana', 'Tienes un enlace de prueba para ver tu proyecto funcionando y lo revisamos juntos. Nada de meses de silencio.'],
   ['Todo queda a tu nombre', 'El código, los datos y el dominio son tuyos desde el primer día.'],

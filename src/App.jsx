@@ -3,6 +3,7 @@ import { useEntradas, useSeccionActiva } from './hooks.js';
 import { Escenario } from './componentes/Escenario.jsx';
 import { Inicio } from './componentes/Inicio.jsx';
 import { Carta } from './componentes/Carta.jsx';
+import { Sectores } from './componentes/Sectores.jsx';
 import { Cambios } from './componentes/Cambios.jsx';
 import { Servicios } from './componentes/Servicios.jsx';
 import { Armador } from './componentes/Armador.jsx';
@@ -41,6 +42,7 @@ export default function App() {
           <div className="read">
             <Inicio />
             <Carta />
+            <Sectores />
             <Cambios />
             <Servicios />
           </div>

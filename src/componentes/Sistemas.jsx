@@ -35,7 +35,7 @@ export function Sistemas() {
       <section className="read seccion sistemas">
         <h2 className="head" data-reveal="">Así se ve en la práctica</h2>
         <p data-reveal="" style={{ '--i': 1 }}>
-          Seis muestras hechas para este sitio, con datos de ejemplo. Son el tipo de herramienta que un negocio termina usando todos los días.
+          Seis muestras hechas para este sitio, con datos de ejemplo. Son el tipo de herramienta que un negocio, sea del sector que sea, termina usando todos los días.
         </p>
         {SISTEMAS.map(({ nombre, Demo, stack, texto }, k) => (
           <article className={`sistema ${k === indice ? 'is-on' : ''}`} data-indice={k} key={nombre}>

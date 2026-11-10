@@ -68,7 +68,7 @@ export function Contacto({ borrador }) {
         </label>
         <label>
           Cuéntame qué necesitas
-          <textarea name="mensaje" required rows={5} maxLength={5000} placeholder="Llevo los pedidos en un cuaderno…" value={campos.mensaje} onChange={cambiar} />
+          <textarea name="mensaje" required rows={5} maxLength={5000} placeholder="Tengo un consultorio y las citas las anoto en una libreta…" value={campos.mensaje} onChange={cambiar} />
         </label>
         {/* Campo trampa para robots: una persona nunca lo ve ni lo llena */}
         <div className="trampa" aria-hidden="true">

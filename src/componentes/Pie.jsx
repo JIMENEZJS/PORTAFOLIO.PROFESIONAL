@@ -1,7 +1,7 @@
 export function Pie() {
   return (
     <footer className="pie">
-      <p>Juan Sebastián Jiménez Valencia, programación y soluciones tecnológicas</p>
+      <p>Juan Sebastián Jiménez Valencia, soluciones tecnológicas amigables y asequibles para todo tipo de negocio</p>
       <p className="pie__enlaces">
         <a className="enlace" href="#servicios">Servicios</a>
         <a className="enlace" href="#proyecto">Arma tu proyecto</a>

@@ -1,7 +1,8 @@
 const PREGUNTAS = [
+  ['¿Trabajas con mi tipo de negocio?', 'Casi seguro que sí. No trabajo para un sector en particular: me adapto a cada negocio. Lo que cambia de uno a otro es el detalle, y ese detalle me lo cuentas tú.'],
   ['¿Necesito saber de tecnología?', 'No. Tú me cuentas cómo funciona tu negocio y yo me encargo de la parte técnica, explicándote cada decisión con palabras simples.'],
   ['Tengo un equipo técnico, ¿podemos trabajar juntos?', 'Sí. Podemos revisar la arquitectura y las herramientas, y trabajar sobre lo que tu equipo ya tiene. Elijo la tecnología según el proyecto y te explico por qué.'],
-  ['¿Cuánto cuesta un proyecto?', 'Depende de lo que haya que construir. Después de la primera conversación te envío una propuesta con precio cerrado, así sabes el total antes de empezar.'],
+  ['¿Cuánto cuesta un proyecto?', 'Depende de lo que haya que construir, y la idea es que sea asequible: podemos empezar por lo más importante y crecer después. Tras la primera conversación te envío una propuesta con precio cerrado, así sabes el total antes de empezar.'],
   ['¿Qué necesito tener listo?', 'Saber qué te quita tiempo hoy. Si además tienes el Excel o el cuaderno con el que trabajas, mejor: ahí está la mitad del diseño.'],
   ['¿Un chatbot con IA se puede equivocar?', 'Sí, puede pasar, y por eso lo limito a la información de tu negocio, lo probamos con preguntas reales de tus clientes y definimos cuándo debe pasarle la conversación a una persona.'],
   ['¿Qué se puede automatizar?', 'Casi cualquier tarea que se repite y sigue siempre los mismos pasos. Si dudas, cuéntamela y te digo con franqueza si vale la pena automatizarla.'],

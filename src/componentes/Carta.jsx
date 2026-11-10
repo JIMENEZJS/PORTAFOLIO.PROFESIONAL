@@ -16,7 +16,7 @@ export function Carta() {
           </div>
           <figcaption>Cuentas escritas a mano, el punto de partida de muchos negocios.</figcaption>
         </figure>
-        <p data-reveal="">Tu negocio ya funciona con algo: un cuaderno, un Excel, un grupo de WhatsApp. Mi trabajo es convertirlo en una solución que no se pierda, que ahorre tiempo y que tu equipo de verdad use. A veces es una página web, a veces un chatbot o una automatización, y a veces un sistema completo.</p>
+        <p data-reveal="">Tu negocio ya funciona con algo: un cuaderno, un Excel, un grupo de WhatsApp. Mi trabajo es convertirlo en una solución que no se pierda, que ahorre tiempo y que tu equipo de verdad use. A veces es una página web, a veces un chatbot o una automatización, y a veces un sistema completo. Siempre a la medida de tu negocio y de tu presupuesto.</p>
         <p data-reveal="" style={{ '--i': 1 }}>Si no sabes de tecnología, no hace falta: te explico cada decisión con palabras simples. Si sabes, podemos hablar de arquitectura y herramientas. Programo en varios lenguajes, como JavaScript y Java, y elijo cada herramienta según lo que tu proyecto necesita.</p>
       </div>
       <p className="carta__firma" data-reveal="" style={{ '--i': 2 }}>

@@ -4,7 +4,7 @@ export function Inicio() {
       <nav className="nav" aria-label="Principal">
         <div className="nav__lado">
           <a className="enlace" href="#servicios">Servicios</a>
-          <a className="enlace nav__extra" href="#sistemas">Ejemplos</a>
+          <a className="enlace nav__extra" href="#sectores">Sectores</a>
         </div>
         <a className="nav__marca" href="#principal" aria-label="Inicio, Juan Sebastián Jiménez Valencia">JSJV</a>
         <div className="nav__lado nav__lado--fin">
@@ -18,7 +18,7 @@ export function Inicio() {
           <span className="linea"><span data-linea style={{ '--i': 1 }}>Jiménez Valencia</span></span>
         </h1>
         <p className="hero__frase" data-carga style={{ '--d': '420ms' }}>
-          Convierto tus ideas en soluciones digitales que trabajan para tu negocio, incluso cuando tú no estás.
+          Sea cual sea tu negocio, me adapto a él para darte una solución digital amigable y asequible, que trabaja incluso cuando tú no estás.
         </p>
         <a className="boton" href="#contacto" data-carga style={{ '--d': '500ms' }}>Cuéntame tu proyecto</a>
       </div>

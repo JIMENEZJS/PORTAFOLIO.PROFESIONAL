@@ -115,6 +115,13 @@ figure.obturador figcaption { margin-top: .6rem; font-size: var(--step-small); c
 .modulo > p > strong { font-weight: 600; }
 .servicios .sub, .porque .sub { font-size: clamp(1.5rem, 1.25rem + 1vw, 2.125rem); line-height: 1.1; }
 
+/* Para quién trabajo */
+.sectores__intro { margin-bottom: 2.5rem; }
+.sectores__lista { line-height: 1.3; }
+.sectores__lista > div { display: grid; gap: .35rem; padding-block: 1rem; border-top: 1px solid var(--line); }
+.sectores__lista dt { font-weight: 600; }
+.sectores__lista dd { color: var(--muted); }
+
 /* Qué cambia en tu negocio */
 .cambios__tabla { width: 100%; border-collapse: collapse; table-layout: fixed; line-height: 1.3; }
 .cambios__tabla th { padding-block: 0 .75rem; text-align: left; font-size: var(--step-small); font-weight: 600; color: var(--muted); }
